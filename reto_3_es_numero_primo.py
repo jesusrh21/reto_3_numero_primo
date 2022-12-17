@@ -19,6 +19,15 @@ def es_primo(numero:int)->bool:
         return True # en caso que no cumpla ninguna de las anteriores
 
 def run_primo():
+    """
+    Logica de ejecucion del programa
+
+    Atributos:
+     - None
+    
+    Return:
+     - None
+    """
     num = input("inserte un numero entero positivo: ") # se le pide el nuemro al usuario
     if num.isdigit(): # comprobamos que inserto un numero
         print(es_primo(numero = int(num))) # si es un numero comprobamos si es primo
@@ -27,22 +36,31 @@ def run_primo():
         print("\nSolo se admiten Numeros Enteros Positivos. Intentelo Nuevamente\n") # numero incorrecto
         run_primo() # relanzamos el programa
 
-def cien_primeros_primos():
-    primos = []
-    valor = 0
-    while len(primos) != 100:
-        match valor:            
-            case 2:
+def cien_primeros_primos()->list:
+    """
+    Muestra cuales son los primeros 100 numeros primos
+
+    Atributos:
+     - None
+    
+    Return:
+     - primos : list
+    """
+    primos = []# lista vacia para guardar los numeros primos
+    valor = 0 # variable por la cual vamos comprobando los numeros
+    while len(primos) != 100: # ciclo para comprobar si ya tenemos los 100 primos
+        match valor: # usamos un match case para comprobar el valor de los numeros mas limpio el codigo          
+            case 2: # si el numero es 2 lo agregamos lo mismo pasa con 3 y 5
                 primos.append(valor)
             case 3:
                 primos.append(valor)
             case 5:
                 primos.append(valor)
-            case _:
+            case _: # en caso que no cumpla los criterios anteriores comprobamos si es primo y si lo es lo añadimos
                 if es_primo(numero = valor):
                     primos.append(valor)
-        valor += 1
-    return primos       
+        valor += 1 # incrementamos el valor de los numeros en 1
+    return primos # retornamos la lista de los 100 primos      
 
 
 if __name__ == '__main__':
